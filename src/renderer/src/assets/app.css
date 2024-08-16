@@ -1,0 +1,15 @@
+#app {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+}
+
+#contents {
+  width: calc(100vw - var(--base-sidebar-width));
+  box-sizing: border-box;
+  padding-left: var(--base-contents-left-inset);
+  padding-bottom: var(--base-contents-bottom-inset);
+  padding-right: var(--base-contents-right-inset);
+  padding-top: var(--base-contents-top-inset);
+}
