@@ -1,5 +1,7 @@
 const TestPage = () => {
-  const handleClick = () => {}
+  const handleClick = () => {
+    window.electron.ipcRenderer.send('scheduler', '123')
+  }
 
   return (
     <div>

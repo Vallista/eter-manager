@@ -27,6 +27,8 @@ export type MonsterSkinType =
  * 몬스터
  */
 export interface Monster {
+  /** 유니크한 이름 */
+  id: string
   /** 이름 */
   name: string
   /** 레벨 */

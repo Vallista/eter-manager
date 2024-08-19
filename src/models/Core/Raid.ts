@@ -28,7 +28,7 @@ export interface Raid {
   /** 레이드 타입 */
   type: RaidType
   /** 레이드 시간 [시, 분] */
-  time: Time[]
+  times: Time[]
   /** 지역 */
   location: string
   /** 년도 */

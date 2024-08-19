@@ -1,12 +1,18 @@
 .sidebar {
   width: var(--base-sidebar-width);
-  height: 100vh;
+  height: calc(100vh - var(--base-titlebar-height));
   background-color: var(--base-white);
 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+
+  position: fixed;
+  top: var(--base-titlebar-height);
+  left: 0;
+
+  border-right: 1px solid var(--base-gray);
 }
 
 .sidebar-header {
@@ -14,7 +20,7 @@
   height: 200px;
   box-sizing: border-box;
   padding: 16px 16px 0 16px;
-  border-bottom: 2px solid var(--base-gray);
+  border-bottom: 1px solid var(--base-gray);
 }
 
 .sidebar-menus {

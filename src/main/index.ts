@@ -1,46 +1,16 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
-import { join } from 'path'
-import { electronApp, optimizer, is } from '@electron-toolkit/utils'
-import icon from '../../resources/icon.png?asset'
+import { app } from 'electron'
+import { electronApp, optimizer } from '@electron-toolkit/utils'
+import { Store } from './libs'
+import { APPLICATION_NAME } from './libs/window'
+import { BossReminder } from './BossReminder'
 
-function createWindow(): void {
-  // Create the browser window.
-  const mainWindow = new BrowserWindow({
-    width: 1280,
-    height: 800,
-    show: false,
-    autoHideMenuBar: true,
-    resizable: false,
-    ...(process.platform === 'linux' ? { icon } : {}),
-    webPreferences: {
-      preload: join(__dirname, '../preload/index.js'),
-      sandbox: false
-    }
-  })
-
-  mainWindow.on('ready-to-show', () => {
-    mainWindow.show()
-  })
-
-  mainWindow.webContents.setWindowOpenHandler((details) => {
-    shell.openExternal(details.url)
-    return { action: 'deny' }
-  })
-
-  // HMR for renderer base on electron-vite cli.
-  // Load the remote URL for development or the local html file for production.
-  if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
-    mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'])
-  } else {
-    mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
-  }
-}
+const bossReminder = new BossReminder()
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-  // Set app user model id for windows
+  //#region electron app initialize
   electronApp.setAppUserModelId('com.electron')
 
   // Default open or close DevTools by F12 in development
@@ -50,25 +20,40 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window)
   })
 
-  // IPC test
-  ipcMain.on('ping', () => console.log('pong'))
+  if (process.platform === 'win32') {
+    app.setAppUserModelId(APPLICATION_NAME)
+  }
+  //#endregion
 
-  createWindow()
+  // MEMO: Electron app이 생성된 후 초기화 동작
+  Store.createTray()
+  Store.createNotification()
+  Store.createScheduler()
 
-  app.on('activate', function () {
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (BrowserWindow.getAllWindows().length === 0) createWindow()
+  // MEMO: Custom Actions (Business 로직)
+  Store.Scheduler.subscribe(() => {
+    bossReminder.checkBossTimeInSettingAlarmTime([0, 2, 5, 10, 20, 30, 40, 50, 60, 115, 118])
+    // bossReminder.notificationNextBossReminder()
   })
+
+  //#region 시작 시 윈도우 열기
+  // Store.Window.createWindow()
+
+  // app.on('activate', function () {
+  //   // On macOS it's common to re-create a window in the app when the
+  //   // dock icon is clicked and there are no other windows open.
+  //   if (BrowserWindow.getAllWindows().length === 0) Store.Window.createWindow()
+  // })
+  //#endregion
 })
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
+  // if (process.platform !== 'darwin') {
+  //   app.quit()
+  // }
 })
 
 // In this file you can include the rest of your app"s specific main process

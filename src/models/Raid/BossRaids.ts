@@ -1,4 +1,4 @@
-import { BossRaid } from '../Core/actions'
+import { BossRaid } from '../Core'
 import {
   거대나방,
   고급주택가,
@@ -9,11 +9,11 @@ import {
   위토생체병기,
   패러사이트,
   포트리스
-} from '../Monster/Bosses'
+} from '../Monster'
 
 export const 보스레이드_와이즈원: BossRaid = {
   type: 'BOSS',
-  time: [
+  times: [
     [0, 30],
     [12, 30]
   ],
@@ -25,7 +25,7 @@ export const 보스레이드_와이즈원: BossRaid = {
 
 export const 보스레이드_울티메이트메거트: BossRaid = {
   type: 'BOSS',
-  time: [
+  times: [
     [2, 30],
     [11, 30]
   ],
@@ -37,7 +37,7 @@ export const 보스레이드_울티메이트메거트: BossRaid = {
 
 export const 보스레이드_렉스: BossRaid = {
   type: 'BOSS',
-  time: [
+  times: [
     [3, 30],
     [15, 30]
   ],
@@ -49,7 +49,7 @@ export const 보스레이드_렉스: BossRaid = {
 
 export const 보스레이드_거대나방: BossRaid = {
   type: 'BOSS',
-  time: [
+  times: [
     [6, 30],
     [18, 30]
   ],
@@ -61,7 +61,7 @@ export const 보스레이드_거대나방: BossRaid = {
 
 export const 보스레이드_위토생체병기: BossRaid = {
   type: 'BOSS',
-  time: [
+  times: [
     [8, 30],
     [14, 30]
   ],
@@ -73,7 +73,7 @@ export const 보스레이드_위토생체병기: BossRaid = {
 
 export const 보스레이드_포트리스: BossRaid = {
   type: 'BOSS',
-  time: [
+  times: [
     [5, 30],
     [20, 0]
   ],
@@ -85,7 +85,7 @@ export const 보스레이드_포트리스: BossRaid = {
 
 export const 보스레이드_문이터: BossRaid = {
   type: 'BOSS',
-  time: [
+  times: [
     [9, 30],
     [21, 50]
   ],
@@ -97,7 +97,7 @@ export const 보스레이드_문이터: BossRaid = {
 
 export const 보스레이드_고급주택가: BossRaid = {
   type: 'BOSS',
-  time: [[22, 30]],
+  times: [[22, 30]],
   year: 2002,
   location: '평창동 고급주택가',
   dimension: 'NOW',
@@ -106,7 +106,7 @@ export const 보스레이드_고급주택가: BossRaid = {
 
 export const 보스레이드_패러사이트: BossRaid = {
   type: 'BOSS',
-  time: [
+  times: [
     [17, 30],
     [23, 30]
   ],

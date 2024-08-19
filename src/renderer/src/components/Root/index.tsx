@@ -1,22 +1,20 @@
-import { useEffect } from 'react'
 import Sidebar from '../Sidebar'
 import { Outlet, useLocation } from 'react-router'
 import '../../assets/app.css'
+import TestPage from '@renderer/pages/Test'
+import { TitleBar } from '../TitleBar'
 
 const Root = () => {
   const location = useLocation()
 
-  useEffect(() => {
-    location.pathname = '/dashboard'
-  }, [])
-
   return (
-    <div id="app">
+    <>
+      <TitleBar />
       <Sidebar menus={[]} />
-      <div id="contents">
-        <Outlet />
+      <div id="app">
+        <div id="contents">{location.pathname === '/' ? <TestPage /> : <Outlet />}</div>
       </div>
-    </div>
+    </>
   )
 }
 

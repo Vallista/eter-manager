@@ -1,0 +1,70 @@
+.titlebar {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: var(--base-titlebar-height);
+  width: calc(100vw - 2px); /*Compensate for body 1px border*/
+  -webkit-app-region: drag;
+  border-bottom: 1px solid var(--base-gray);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px 0 24px;
+}
+
+.title-container {
+  background-color: #fff;
+}
+
+.title-container span {
+  white-space: nowrap;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -2px;
+}
+
+.drag-region {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.window-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  -webkit-app-region: no-drag;
+}
+
+.window-controls-button {
+  user-select: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.window-controls-min {
+  background-color: #ffb32c;
+}
+
+.window-controls-restore,
+.window-controls-max {
+  background-color: #40c057;
+}
+
+.window-controls-disable {
+  background-color: #eeeeee;
+  cursor: not-allowed;
+}
+
+.window-controls-close {
+  background-color: #fa5252;
+}

@@ -1,15 +1,20 @@
 #app {
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - var(--base-titlebar-height));
+  margin-top: var(--base-titlebar-height);
 }
 
 #contents {
+  margin-left: var(--base-sidebar-width);
   width: calc(100vw - var(--base-sidebar-width));
   box-sizing: border-box;
   padding-left: var(--base-contents-left-inset);
   padding-bottom: var(--base-contents-bottom-inset);
   padding-right: var(--base-contents-right-inset);
   padding-top: var(--base-contents-top-inset);
+  background-color: var(--base-white);
+  padding: 24px;
 }

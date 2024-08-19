@@ -11,6 +11,7 @@
   --base-gray: #eeeeee;
 
   --base-sidebar-width: 240px;
+  --base-titlebar-height: 60px;
   --base-contents-left-inset: 32px;
   --base-contents-right-inset: 32px;
   --base-contents-top-inset: 32px;
@@ -26,6 +27,19 @@
   --color-warning: var(--base-yellow);
   --color-accent: var(--base-mint);
   --color-text: var(--base-blue);
+}
+
+html {
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
 }
 
 p,
@@ -51,15 +65,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--color-text);
-  background: var(--color-background);
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  font-weight: normal;
+body {
+  background: var(--color-background);
 }
 
 ul {
@@ -68,4 +77,11 @@ ul {
 
 body {
   min-height: 100vh;
+  -webkit-app-region: drag;
+}
+
+button,
+input,
+form {
+  -webkit-app-region: no-drag;
 }

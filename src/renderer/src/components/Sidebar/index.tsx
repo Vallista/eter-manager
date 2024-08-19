@@ -14,7 +14,6 @@ interface Props {
 const Sidebar: FC<Props> = () => {
   return (
     <div className={classes.sidebar}>
-      <div className={classes['sidebar-header']}></div>
       <div className={classes['sidebar-menus']}>
         <div className={classes['sidebar-menu']}></div>
       </div>
