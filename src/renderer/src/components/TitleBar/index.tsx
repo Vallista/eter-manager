@@ -1,6 +1,9 @@
 import classNames from 'classnames'
 import classes from './index.module.css'
-import { sendIpcEvent } from '@renderer/utils'
+import { sendIpcEvent } from '../../utils'
+import { Link } from 'react-router-dom'
+import { Label } from '../Label'
+import { version } from '../../../../../package.json'
 
 export const TitleBar = () => {
   const handleClose = () => {
@@ -14,7 +17,8 @@ export const TitleBar = () => {
   return (
     <header className={classes['titlebar']}>
       <div className={classes['title-container']}>
-        <span>ETERMANAGER</span>
+        <Link to="/">ETERMANAGER</Link>
+        <Label color="red">v{version}</Label>
       </div>
       <div className={classes['drag-region']}>
         <div className={classes['window-title']}></div>
@@ -34,7 +38,7 @@ export const TitleBar = () => {
               classes['window-controls-min']
             )}
             onClick={handleMinimize}
-          ></button>
+          />
           <button
             className={classNames(
               classes['window-controls-button'],
@@ -42,7 +46,7 @@ export const TitleBar = () => {
               classes['window-controls-close']
             )}
             onClick={handleClose}
-          ></button>
+          />
         </div>
       </div>
     </header>

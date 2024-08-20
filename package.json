@@ -1,6 +1,6 @@
 {
   "name": "eter-manager",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "An Electron application with React and TypeScript",
   "main": "./out/main/index.js",
   "author": "example.com",
@@ -23,6 +23,7 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/utils": "^3.0.0",
+    "@remix-run/router": "^1.19.1",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.12",
     "electron-json-storage": "^4.6.0",
@@ -52,11 +53,5 @@
     "typescript": "^5.5.2",
     "vite": "^5.3.1",
     "vitest": "^2.0.5"
-  },
-  "appId": "이터매니저",
-  "win": {
-    "target": "nsis",
-    "icon": "icon.png",
-    "appId": "이터매니저"
   }
 }

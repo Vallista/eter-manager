@@ -1,0 +1,35 @@
+.background-color-black {
+  color: var(--base-white);
+  background-color: var(--base-black);
+}
+
+.background-color-blue {
+  color: var(--base-white);
+  background-color: var(--base-blue);
+}
+
+.background-color-red {
+  color: var(--base-white);
+  background-color: var(--base-red);
+}
+
+.background-color-mint {
+  color: var(--base-white);
+  background-color: var(--base-mint);
+}
+
+.background-color-yellow {
+  color: var(--base-white);
+  background-color: var(--base-yellow);
+}
+
+.background-color-purple {
+  color: var(--base-white);
+  background-color: var(--base-purple);
+}
+
+.label {
+  padding: 2px 6px;
+  font-size: 12px;
+  border-radius: 4px;
+}

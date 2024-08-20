@@ -1,18 +1,14 @@
-import Root from '@renderer/components/Root'
-import { createBrowserRouter } from 'react-router-dom'
+import Root from '../components/Root'
+import { createHashRouter } from 'react-router-dom'
+import { sidebar } from './sidebar'
 
-const routes = createBrowserRouter([
+export const routes = createHashRouter([
   {
     path: '/',
     element: <Root />,
-    children: [
-      // {
-      //   path: 'dashboard',
-      //   index: true,
-      //   element: <TestPage />
-      // }
-    ]
+    children: sidebar.map((it) => ({
+      path: it.path,
+      element: it.element
+    }))
   }
 ])
-
-export default routes

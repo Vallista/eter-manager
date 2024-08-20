@@ -9,6 +9,11 @@ export const APPLICATION_NAME = '이터매니저'
 
 export class Window {
   public createWindow() {
+    if (this.instance !== null) {
+      this.instance.focus()
+      return
+    }
+
     this.instance = new BrowserWindow({
       width: WINDOW_WIDTH,
       height: WINDOW_HEIGHT,
@@ -35,18 +40,11 @@ export class Window {
       }
     })
 
-    // HMR for renderer base on electron-vite cli.
-    // Load the remote URL for development or the local html file for production.
     if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
       this.instance.loadURL(process.env['ELECTRON_RENDERER_URL'])
     } else {
       this.instance.loadFile(join(__dirname, '../renderer/index.html'))
     }
-
-    // this.instance.on('closed', () => {
-    // this.instance?.hide()
-    // this.hide()
-    // })
   }
 
   public show() {
@@ -55,10 +53,15 @@ export class Window {
 
   public close() {
     this.instance?.hide()
+    this.instance = null
   }
 
   public minimize() {
     this.instance?.minimize()
+  }
+
+  public get WebContents() {
+    return this.instance?.webContents
   }
 
   private instance: BrowserWindow | null = null

@@ -14,14 +14,24 @@
 }
 
 .title-container {
+  -webkit-app-region: no-drag;
+  -webkit-user-select: none;
+  user-select: none;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
   background-color: #fff;
 }
 
-.title-container span {
+.title-container a {
+  text-decoration: none;
+  color: var(--base-black);
   white-space: nowrap;
   font-size: 24px;
   font-weight: 600;
-  letter-spacing: -2px;
+  letter-spacing: 0;
 }
 
 .drag-region {
@@ -33,12 +43,15 @@
 }
 
 .window-controls {
+  -webkit-app-region: no-drag;
+  -webkit-user-select: none;
+  user-select: none;
+
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
   gap: 10px;
-  -webkit-app-region: no-drag;
 }
 
 .window-controls-button {

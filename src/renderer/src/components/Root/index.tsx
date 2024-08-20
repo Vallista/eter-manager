@@ -1,7 +1,7 @@
 import Sidebar from '../Sidebar'
 import { Outlet, useLocation } from 'react-router'
 import '../../assets/app.css'
-import TestPage from '@renderer/pages/Test'
+import HomePage from '../../pages/HomePage'
 import { TitleBar } from '../TitleBar'
 
 const Root = () => {
@@ -10,9 +10,9 @@ const Root = () => {
   return (
     <>
       <TitleBar />
-      <Sidebar menus={[]} />
+      <Sidebar />
       <div id="app">
-        <div id="contents">{location.pathname === '/' ? <TestPage /> : <Outlet />}</div>
+        <div id="contents">{location.pathname === '/' ? <HomePage /> : <Outlet />}</div>
       </div>
     </>
   )

@@ -26,18 +26,11 @@ app.whenReady().then(() => {
   //#endregion
 
   // MEMO: Electron app이 생성된 후 초기화 동작
-  Store.createTray()
-  Store.createNotification()
-  Store.createScheduler()
-
-  // MEMO: Custom Actions (Business 로직)
-  Store.Scheduler.subscribe(() => {
-    bossReminder.checkBossTimeInSettingAlarmTime([0, 2, 5, 10, 20, 30, 40, 50, 60, 115, 118])
-    // bossReminder.notificationNextBossReminder()
-  })
+  Store.mount()
+  bossReminder.mount()
 
   //#region 시작 시 윈도우 열기
-  // Store.Window.createWindow()
+  Store.Window.createWindow()
 
   // app.on('activate', function () {
   //   // On macOS it's common to re-create a window in the app when the

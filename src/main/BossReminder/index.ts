@@ -10,11 +10,23 @@ const CHECK_BOSS_DIFF_TIME = 60000
 export class BossReminder {
   constructor() {}
 
+  public mount() {
+    // MEMO: Window와 통신하는 이벤트 (보스 레이드 데이터 가져오기)
+    Store.EventBus.subscribe('GET_BOSS_RAIDS', (event) => {
+      const nowTime = dayjs().utcOffset(9).toDate()
+      event.reply('GET_BOSS_RAIDS', getBossCycleQueue(nowTime))
+    })
+
+    Store.Scheduler.subscribe(() => {
+      this.checkBossTimeInSettingAlarmTime([1, 2, 5, 10, 20, 30, 40, 50, 60])
+    })
+  }
+
   /**
    * 다음 보스 노티를 보냅니다.
    * (현재 시간 기준, UTC 9)
    */
-  public notificationNextBossReminder() {
+  private notificationNextBossReminder() {
     const nowTime = dayjs().utc().toDate()
     const target = this.findNextBossTime(nowTime)
 
@@ -30,12 +42,16 @@ export class BossReminder {
   /**
    * 보스의 시간이 지정한 알람 시간 내에 있는 경우
    */
-  public checkBossTimeInSettingAlarmTime(minutes: number[]) {
+  private checkBossTimeInSettingAlarmTime(minutes: number[]) {
     const nowTime = dayjs().utc().toDate()
-    const nextBossRaid = getBossCycleQueue(nowTime)[0]
+    const bossCycleQueue = getBossCycleQueue(nowTime)
+    const nextBossRaid = bossCycleQueue[0]
     const alarmMinutes = minutes.map((it) =>
       dayjs(nextBossRaid.time).utc().subtract(it, 'minute').toDate()
     )
+
+    // MEMO: UI에서 그려주기 위해 보스레이드 사이클을 넘겨준다.
+    Store.EventBus.send('GET_BOSS_RAIDS', bossCycleQueue)
 
     const diffList = alarmMinutes.map((minute) => {
       // MEMO: 다음 레이드 시간에서 알람 시간을 뺀 시간을 기준으로 diff를 체크한다.

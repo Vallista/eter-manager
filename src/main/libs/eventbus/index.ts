@@ -13,12 +13,16 @@ export class EventBus {
     })
   }
 
-  private subscribe<T extends IPCEvents>(
+  public subscribe<T extends IPCEvents>(
     type: T['type'],
-    callback: (payload: T['payload']) => void
+    callback: (event: Electron.IpcMainEvent, payload: T['payload']) => void
   ) {
-    ipcMain.on(type, (_, payload) => {
-      callback(payload)
+    ipcMain.on(type, (event, payload) => {
+      callback(event, payload)
     })
+  }
+
+  public send<T extends IPCEvents>(type: T['type'], payload: T['payload']) {
+    Store.Window.WebContents?.send(type, payload)
   }
 }

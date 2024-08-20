@@ -10,7 +10,7 @@ export class Tray {
 
     const contextMenu = ElectronMenu.buildFromTemplate([
       {
-        label: '앱 열기',
+        label: '창 열기',
         click: () => {
           Store.Window.createWindow()
         }
@@ -22,9 +22,14 @@ export class Tray {
         }
       }
     ])
+
     this.instnace.setToolTip(APPLICATION_NAME)
     this.instnace.setTitle(APPLICATION_NAME)
     this.instnace.setContextMenu(contextMenu)
+
+    this.instnace.on('double-click', () => {
+      Store.Window.createWindow()
+    })
   }
 
   private instnace!: ElectronTray

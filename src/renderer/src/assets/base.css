@@ -9,9 +9,10 @@
   --base-blue: #1b2149;
   --base-purple: #7b57df;
   --base-gray: #eeeeee;
+  --base-black: #000000;
 
   --base-sidebar-width: 240px;
-  --base-titlebar-height: 60px;
+  --base-titlebar-height: 80px;
   --base-contents-left-inset: 32px;
   --base-contents-right-inset: 32px;
   --base-contents-top-inset: 32px;

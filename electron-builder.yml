@@ -1,5 +1,5 @@
-appId: com.electron.app
-productName: eter-manager
+appId: com.etermanager.app
+productName: 이터매니저
 directories:
   buildResources: build
 files:
@@ -12,7 +12,8 @@ files:
 asarUnpack:
   - resources/**
 win:
-  executableName: eter-manager
+  executableName: 이터매니저
+  icon: build/icon.ico
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}
