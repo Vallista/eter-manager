@@ -1,9 +1,8 @@
-import os from 'os'
-import storage from 'electron-json-storage'
+import Store from 'electron-store'
 
-export class Storage<IStorage extends Record<string, object>> {
+export class Storage<IStorage extends Record<string, any>> {
   constructor() {
-    storage.setDataPath(os.tmpdir())
+    this.store = new Store()
   }
 
   public set<T extends IStorage = IStorage, K extends keyof T = keyof T>(
@@ -11,10 +10,7 @@ export class Storage<IStorage extends Record<string, object>> {
     value: T[K]
   ): Promise<void> {
     return new Promise((resolve, reject) => {
-      storage.set(key as any, value, (error) => {
-        if (error) throw reject(error)
-        resolve(void 0)
-      })
+      this.store
     })
   }
 
@@ -35,4 +31,12 @@ export class Storage<IStorage extends Record<string, object>> {
       })
     })
   }
+
+  private get Store() {
+    return this.store as any as {
+      set: (key: string, value: string) => void
+    }
+  }
+
+  private store: Store
 }
