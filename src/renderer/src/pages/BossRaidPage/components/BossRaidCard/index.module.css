@@ -1,0 +1,96 @@
+:root {
+  --boss-card-width: 290px;
+}
+
+.container {
+  position: relative;
+  width: var(--boss-card-width);
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  gap: 12px;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.selected {
+  background-color: var(--base-white);
+  border: 1px solid var(--base-red);
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.header .img-container {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--base-black2);
+  border-radius: 6px;
+}
+
+.header .img-container img {
+  width: 200px;
+  height: auto;
+}
+
+.header .estimate {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+}
+
+.contents {
+  position: relative;
+  z-index: 1;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contents .name {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.contents .information {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.contents .information .dimension {
+  font-size: 14px;
+}
+
+.contents .information .location {
+  font-size: 14px;
+}
+
+.contents .information .time {
+  font-size: 14px;
+}
+
+.contents .labels {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.contents .labels .skin {
+}
+
+.contents .labels .size {
+}

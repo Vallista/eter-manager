@@ -1,0 +1,72 @@
+.container {
+  display: block;
+  width: 55px;
+  height: 30px;
+  background-color: var(--base-gray);
+  border-radius: 40px;
+  /* border: 1px solid var(--base-gray); */
+  cursor: pointer;
+
+  -webkit-app-region: no-drag;
+  -webkit-user-select: none;
+  user-select: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  box-shadow:
+    0 -1px 1px rgba(0, 0, 0, 0.16),
+    0 1px 1px rgba(0, 0, 0, 0.23);
+
+  transition:
+    background-color 0.2s,
+    border 0.2s;
+}
+
+.container .input {
+  width: 1px;
+  height: 1px;
+  visibility: hidden;
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+
+.container:has(> .input:checked) {
+  background-color: var(--base-red);
+  /* border: 1px solid var(--base-red); */
+}
+
+.container .circle {
+  position: relative;
+  left: 3px;
+  top: 2px;
+
+  width: 26px;
+  height: 26px;
+
+  border-radius: 30px;
+  /* border: 1px solid var(--base-white); */
+  background-color: var(--base-white);
+
+  transition: left 0.2s;
+}
+
+.input:checked + .circle {
+  left: 27px;
+}
+
+.small {
+  width: 40px !important;
+  height: 20px;
+}
+
+.small .circle {
+  left: 2px;
+  top: 1px;
+  width: 18px;
+  height: 18px;
+}
+
+.small .input:checked + .circle {
+  left: 20px !important;
+}

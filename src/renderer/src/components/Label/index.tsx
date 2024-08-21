@@ -3,7 +3,7 @@ import { FC, ReactNode } from 'react'
 import styles from './index.module.css'
 
 interface Props {
-  color?: 'white' | 'red' | 'mint' | 'yellow' | 'blue' | 'purple' | 'gray'
+  color?: 'white' | 'red' | 'mint' | 'yellow' | 'blue' | 'purple' | 'gray' | 'black'
   children: ReactNode
 }
 

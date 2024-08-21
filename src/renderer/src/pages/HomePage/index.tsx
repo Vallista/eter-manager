@@ -9,9 +9,10 @@ const HomePage = () => {
 
   return (
     <div className={classNames([styles.container])}>
-      <header>
-        <h2>어서오세요 이터널시티 매니저, 이터매니저입니다.</h2>
-      </header>
+      {/* <header>
+        <h2>ETERNALCITY MANAGER</h2>
+        <h2>이터널시티 매니저</h2>
+      </header> */}
       <div>
         <Shape onClick={() => navigate('/boss-raids')}>
           <div className={classNames([styles['inner-shape']])}>

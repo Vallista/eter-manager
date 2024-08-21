@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  overflow-x: scroll;
+
+  -webkit-app-region: no-drag;
+  -webkit-user-select: none;
+  user-select: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

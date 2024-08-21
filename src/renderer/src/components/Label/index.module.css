@@ -28,6 +28,16 @@
   background-color: var(--base-purple);
 }
 
+.background-color-gray {
+  color: var(--base-black);
+  background-color: var(--base-gray);
+}
+
+.background-color-black {
+  color: var(--base-white);
+  background-color: var(--base-black);
+}
+
 .label {
   padding: 2px 6px;
   font-size: 12px;

@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+  padding: 12px;
+
+  background-color: var(--base-gray);
+  border-radius: 6px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.container h2 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.container .alarm-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 22px;
+}
+
+.toggle-container .toggle-text {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}

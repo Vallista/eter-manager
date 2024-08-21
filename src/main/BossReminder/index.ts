@@ -66,7 +66,6 @@ export class BossReminder {
       diffList.find((it) => {
         const result = Math.abs(nowTimeToMs) - Math.abs(it)
         // MEMO: 이미 지나간 것은 건들지 않는다.
-        console.log(result, CHECK_BOSS_DIFF_TIME / 2)
         if (result < -(CHECK_BOSS_DIFF_TIME / 2)) return null
         return Math.abs(nowTimeToMs) - Math.abs(it) < CHECK_BOSS_DIFF_TIME / 2
       })

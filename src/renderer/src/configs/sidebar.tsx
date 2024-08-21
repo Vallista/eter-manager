@@ -1,4 +1,4 @@
-import BossRaidPage from '../pages/BossRaidPage/BossRaidPage'
+import BossRaidPage from '../pages/BossRaidPage'
 
 export const sidebar = [
   {
