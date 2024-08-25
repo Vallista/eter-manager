@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import styles from './index.module.css'
-import { Label } from '@renderer/components/Label'
+import { Label } from '../../../../components/Label'
 import {
   DIMENSION,
   Dimension,

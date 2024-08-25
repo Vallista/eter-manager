@@ -2,7 +2,9 @@ import { ipcMain } from 'electron'
 import { IPCEvents } from '../../../models/EventBus/type'
 import { Store } from '..'
 
-export class EventBus {
+type IPCEventsMap = { [E in IPCEvents as E['type']]: E }
+
+export class EventBus<T extends IPCEvents = IPCEvents> {
   public mount() {
     this.subscribe('WINDOW_CLOSE', () => {
       Store.Window.close()
@@ -13,16 +15,16 @@ export class EventBus {
     })
   }
 
-  public subscribe<T extends IPCEvents>(
-    type: T['type'],
-    callback: (event: Electron.IpcMainEvent, payload: T['payload']) => void
+  public subscribe<K extends T['type'], P extends IPCEventsMap[K]['payload']>(
+    type: K,
+    callback: (event: Electron.IpcMainEvent, payload: P) => void
   ) {
     ipcMain.on(type, (event, payload) => {
       callback(event, payload)
     })
   }
 
-  public send<T extends IPCEvents>(type: T['type'], payload: T['payload']) {
-    Store.Window.WebContents?.send(type, payload)
+  public send<K extends T['type'], P extends IPCEventsMap[K]['payload']>(type: K, payload: P) {
+    Store.Window.WebContents?.send(type as unknown as string, payload)
   }
 }

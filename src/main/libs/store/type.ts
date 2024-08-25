@@ -1,5 +1,13 @@
-export interface BaseStorage extends Record<string, object> {
+export interface BaseStorage {
   settings: {
-    alarms: number[]
+    alarms: AlarmStorage
   }
+}
+
+export interface AlarmStorage {
+  min5: boolean
+  min10: boolean
+  min20: boolean
+  min30: boolean
+  min60: boolean
 }

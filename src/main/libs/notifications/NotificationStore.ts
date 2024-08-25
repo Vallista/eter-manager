@@ -1,5 +1,5 @@
 import { Notification } from './Notification'
-import * as bossRaids from '../../../models/Raid/BossRaids'
+import * as bossRaids from '../../../models/Raid'
 import { BossRaid } from '../../../models'
 
 import 와이즈원_이미지 from '../../../../resources/monsters/bosses/thie_wise_one.png?asset'

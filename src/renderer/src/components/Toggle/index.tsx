@@ -19,13 +19,14 @@ export const Toggle: FC<Props> = (props) => {
   }
 
   useEffect(() => {
-    ref.current?.setAttribute('checked', defaultValue || value ? 'true' : 'false')
+    if (ref.current) ref.current.checked = defaultValue || value
   }, [])
 
   useEffect(() => {
     if (value === checked) return
     setChecked(value)
-    ref.current?.setAttribute('checked', defaultValue || value ? 'true' : 'false')
+
+    if (ref.current) ref.current.checked = defaultValue || value
   }, [value, checked])
 
   return (

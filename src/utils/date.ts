@@ -9,24 +9,6 @@ dayjs.extend(utc)
 dayjs.extend(relativeTime)
 dayjs.extend(updateLocale)
 
-// dayjs.updateLocale('ko', {
-//   relativeTime: {
-//     future: '%s 후',
-//     past: '%s 전',
-//     s: '1초',
-//     m: '1분',
-//     mm: '%d분',
-//     h: '한 시간',
-//     hh: '%d시간',
-//     d: '하루',
-//     dd: '%d일',
-//     M: '한 달',
-//     MM: '%d달',
-//     y: '일 년',
-//     yy: '%d년'
-//   }
-// })
-
 dayjs.locale('ko')
 
 export function getDiffAtoB(a: Date, b: Date): number {

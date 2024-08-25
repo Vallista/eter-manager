@@ -17,8 +17,28 @@ export class BossReminder {
       event.reply('GET_BOSS_RAIDS', getBossCycleQueue(nowTime))
     })
 
+    Store.EventBus.subscribe('GET_BOSS_RAID_ALARMS', (event) => {
+      const alarms = Store.Storage.get('settings').alarms
+      event.reply('GET_BOSS_RAID_ALARMS', alarms)
+    })
+
+    Store.EventBus.subscribe('SAVE_BOSS_RAID_ALARMS', (_, payload) => {
+      Store.Storage.set('settings', {
+        alarms: payload
+      })
+    })
+
     Store.Scheduler.subscribe(() => {
-      this.checkBossTimeInSettingAlarmTime([1, 2, 5, 10, 20, 30, 40, 50, 60])
+      const { alarms } = Store.Storage.get('settings')
+      const { min5, min10, min20, min30, min60 } = alarms
+
+      this.checkBossTimeInSettingAlarmTime([
+        ...(min5 ? [1, 2, 3, 4, 5] : []),
+        ...(min10 ? [10] : []),
+        ...(min20 ? [20] : []),
+        ...(min30 ? [30] : []),
+        ...(min60 ? [60] : [])
+      ])
     })
   }
 

@@ -3,8 +3,9 @@ import { BossRaid } from '../Core'
 export type IPCEvents =
   | IPCEventWindowClose
   | IPCEventWindowMinimum
-  | IPCEventSave
   | IPCEventGetBossRaids
+  | IPCEventGetBossRaidAlarms
+  | IPCEventSaveBossRaidAlarms
 
 export interface IPCEventWindowClose {
   type: 'WINDOW_CLOSE'
@@ -16,11 +17,6 @@ export interface IPCEventWindowMinimum {
   payload: {}
 }
 
-export interface IPCEventSave {
-  type: 'SAVE'
-  payload: {}
-}
-
 export interface IPCEventGetBossRaids {
   type: 'GET_BOSS_RAIDS'
   payload: {
@@ -28,4 +24,19 @@ export interface IPCEventGetBossRaids {
     time: Date
     origin: BossRaid
   }[]
+}
+
+export interface IPCEventSaveBossRaidAlarms {
+  type: 'SAVE_BOSS_RAID_ALARMS'
+  payload: {
+    min5: boolean
+    min10: boolean
+    min20: boolean
+    min30: boolean
+    min60: boolean
+  }
+}
+
+export interface IPCEventGetBossRaidAlarms extends Pick<IPCEventSaveBossRaidAlarms, 'payload'> {
+  type: 'GET_BOSS_RAID_ALARMS'
 }
