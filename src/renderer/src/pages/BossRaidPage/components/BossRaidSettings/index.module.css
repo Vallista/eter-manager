@@ -15,6 +15,13 @@
   font-weight: 600;
 }
 
+.container .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+}
+
 .container .alarm-wrapper {
   display: flex;
   flex-direction: column;

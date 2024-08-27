@@ -108,63 +108,69 @@ export const BossRaidSettings: FC<Props> = () => {
 
   return (
     <div className={styles['container']}>
-      <h2>보스레이드 알람 설정</h2>
+      <h2>알람 설정</h2>
       <div className={styles['alarm-wrapper']}>
-        <ToggleWithDescription
-          value={state.min5}
-          onToggle={(value) =>
-            dispatch({
-              type: 'MIN_5',
-              payload: value
-            })
-          }
-        >
-          5분 전부터 1분마다 알람 받기
-        </ToggleWithDescription>
-        <ToggleWithDescription
-          value={state.min10}
-          onToggle={(value) =>
-            dispatch({
-              type: 'MIN_10',
-              payload: value
-            })
-          }
-        >
-          10분 전에 알람 받기
-        </ToggleWithDescription>
-        <ToggleWithDescription
-          value={state.min20}
-          onToggle={(value) =>
-            dispatch({
-              type: 'MIN_20',
-              payload: value
-            })
-          }
-        >
-          20분 전에 알람 받기
-        </ToggleWithDescription>
-        <ToggleWithDescription
-          value={state.min30}
-          onToggle={(value) =>
-            dispatch({
-              type: 'MIN_30',
-              payload: value
-            })
-          }
-        >
-          30분 전에 알람 받기
-        </ToggleWithDescription>
-        <ToggleWithDescription
-          value={state.min60}
-          onToggle={(value) =>
-            dispatch({
-              type: 'MIN_60',
-              payload: value
-            })
-          }
-        >
-          60분 전에 알람 받기
-        </ToggleWithDescription>
+        <div className={styles.row}>
+          <ToggleWithDescription
+            value={state.min5}
+            onToggle={(value) =>
+              dispatch({
+                type: 'MIN_5',
+                payload: value
+              })
+            }
+          >
+            5분 전부터 1분마다 알람 받기
+          </ToggleWithDescription>
+          <ToggleWithDescription
+            value={state.min10}
+            onToggle={(value) =>
+              dispatch({
+                type: 'MIN_10',
+                payload: value
+              })
+            }
+          >
+            10분 전에 알람 받기
+          </ToggleWithDescription>
+        </div>
+        <div className={styles.row}>
+          <ToggleWithDescription
+            value={state.min20}
+            onToggle={(value) =>
+              dispatch({
+                type: 'MIN_20',
+                payload: value
+              })
+            }
+          >
+            20분 전에 알람 받기
+          </ToggleWithDescription>
+          <ToggleWithDescription
+            value={state.min30}
+            onToggle={(value) =>
+              dispatch({
+                type: 'MIN_30',
+                payload: value
+              })
+            }
+          >
+            30분 전에 알람 받기
+          </ToggleWithDescription>
+        </div>
+        <div className={styles.row}>
+          <ToggleWithDescription
+            value={state.min60}
+            onToggle={(value) =>
+              dispatch({
+                type: 'MIN_60',
+                payload: value
+              })
+            }
+          >
+            60분 전에 알람 받기
+          </ToggleWithDescription>
+        </div>
       </div>
     </div>
   )
